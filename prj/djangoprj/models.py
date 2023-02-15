@@ -24,4 +24,19 @@ class Good(models.Model):
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
-        ordering = ['-price']         # сортировка
+        ordering = ['-price']  # сортировка
+
+
+class Course(models.Model):
+    name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name
+
+
+class Student(models.Model):
+    name = models.CharField(max_length=15)
+    course = models.ManyToManyField(Course)
+
+    def __str__(self):
+        return self.name
